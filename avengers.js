@@ -112,26 +112,30 @@ const strange = {
     }   
 }
 
-const personas = [thanos, capitao, strange, thor, ironman]
+const personas = [thanos, capitao, strange, thor, ironman, hulk]; 
 
-function compara(lista){
-    let maior;
-    let menor= lista[0].forca
-    for(p in lista){
-        if(lista[p].forca > menor){
-            maior = lista[p].nome
-        }else if(lista[p].forca > maior){
-            maior = lista[p].forca
-        }else{
-            menor = lista[p].forca
+function compara(lista) {
+    let maisForte = lista[0];
+    let maisRapido = lista[0];
+    let maisResistente = lista[0];
 
+    for (let p of lista) { 
+        if (p.forca > maisForte.forca) { 
+            maisForte = p;
+        }
+        if (p.velocidade > maisRapido.velocidade) { 
+            maisRapido = p;
+        }
+        if (p.resistencia > maisResistente.resistencia) { 
+            maisResistente = p;
         }
     }
 
-    return "O mais forte é " + maior
-
+    return "O mais forte é " + maisForte.nome + "\n" + "O mais rápido é " + maisRapido.nome + "\n" + "O mais resistente é " + maisResistente.nome;
 }
 
+for (let p of personas) {
+    console.log(p.descricao() + "\n");
+}
 
-
-console.log(compara(personas))
+console.log(compara(personas));
